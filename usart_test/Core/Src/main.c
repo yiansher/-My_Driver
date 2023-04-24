@@ -118,7 +118,7 @@ int main(void)
     /* USER CODE BEGIN 3 */
         if(tim6_flag)
         {
-            uart_data_deal();
+            uart_data_deal(&data_packet, &data_deal_complete_flag);
         }
     }
   /* USER CODE END 3 */

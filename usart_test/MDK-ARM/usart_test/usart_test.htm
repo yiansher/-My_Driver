@@ -3,7 +3,7 @@
 <title>Static Call Graph - [usart_test\usart_test.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image usart_test\usart_test.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6130100: Last Updated: Sat Apr 22 10:22:20 2023
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 6130100: Last Updated: Mon Apr 24 09:28:57 2023
 <BR><P>
 <H3>Maximum Stack Usage =        152 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -862,7 +862,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[86]"></a>HAL_UART_IRQHandler</STRONG> (Thumb, 548 bytes, Stack size 24 bytes, stm32f1xx_hal_uart.o(.text.HAL_UART_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 148 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 140 + Unknown Stack Size
 <LI>Call Chain = HAL_UART_IRQHandler &rArr; UART_Receive_IT &rArr; HAL_UART_RxCpltCallback &rArr; ringbuffer_data_deal &rArr; rt_ringbuffer_getchar &rArr; __aeabi_assert &rArr; abort &rArr; __rt_SIGABRT &rArr; __rt_SIGABRT_inner &rArr; __default_signal_display &rArr; _ttywrch
 </UL>
 <BR>[Calls]<UL><LI><a href="#[8b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_DMA_Abort
@@ -905,7 +905,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[94]"></a>HAL_UART_RxCpltCallback</STRONG> (Thumb, 60 bytes, Stack size 16 bytes, drv_usart.o(.text.HAL_UART_RxCpltCallback))
-<BR><BR>[Stack]<UL><LI>Max Depth = 120 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 112 + Unknown Stack Size
 <LI>Call Chain = HAL_UART_RxCpltCallback &rArr; ringbuffer_data_deal &rArr; rt_ringbuffer_getchar &rArr; __aeabi_assert &rArr; abort &rArr; __rt_SIGABRT &rArr; __rt_SIGABRT_inner &rArr; __default_signal_display &rArr; _ttywrch
 </UL>
 <BR>[Calls]<UL><LI><a href="#[92]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Receive_IT
@@ -920,6 +920,8 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[77]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_GetTick
 <LI><a href="#[97]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;UART_WaitOnFlagUntilTimeout
+</UL>
+<BR>[Called By]<UL><LI><a href="#[a4]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;uart_data_deal
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.text.main)
 </UL>
@@ -1017,7 +1019,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[2f]"></a>USART1_IRQHandler</STRONG> (Thumb, 8 bytes, Stack size 0 bytes, stm32f1xx_it.o(.text.USART1_IRQHandler))
-<BR><BR>[Stack]<UL><LI>Max Depth = 148 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 140 + Unknown Stack Size
 <LI>Call Chain = USART1_IRQHandler &rArr; HAL_UART_IRQHandler &rArr; UART_Receive_IT &rArr; HAL_UART_RxCpltCallback &rArr; ringbuffer_data_deal &rArr; rt_ringbuffer_getchar &rArr; __aeabi_assert &rArr; abort &rArr; __rt_SIGABRT &rArr; __rt_SIGABRT_inner &rArr; __default_signal_display &rArr; _ttywrch
 </UL>
 <BR>[Calls]<UL><LI><a href="#[86]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_IRQHandler
@@ -1031,7 +1033,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f103xe.o(RESET)
 </UL>
-<P><STRONG><a name="[55]"></a>main</STRONG> (Thumb, 136 bytes, Stack size 0 bytes, main.o(.text.main))
+<P><STRONG><a name="[55]"></a>main</STRONG> (Thumb, 152 bytes, Stack size 0 bytes, main.o(.text.main))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152 + Unknown Stack Size
 <LI>Call Chain = main &rArr; SystemClock_Config &rArr; HAL_RCC_ClockConfig &rArr; HAL_InitTick &rArr; HAL_NVIC_SetPriority &rArr; __NVIC_SetPriority
 </UL>
@@ -1048,8 +1050,8 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[54]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__rt_entry_main
 </UL>
 
-<P><STRONG><a name="[96]"></a>ringbuffer_data_deal</STRONG> (Thumb, 240 bytes, Stack size 24 bytes, drv_usart.o(.text.ringbuffer_data_deal))
-<BR><BR>[Stack]<UL><LI>Max Depth = 104 + Unknown Stack Size
+<P><STRONG><a name="[96]"></a>ringbuffer_data_deal</STRONG> (Thumb, 240 bytes, Stack size 16 bytes, drv_usart.o(.text.ringbuffer_data_deal))
+<BR><BR>[Stack]<UL><LI>Max Depth = 96 + Unknown Stack Size
 <LI>Call Chain = ringbuffer_data_deal &rArr; rt_ringbuffer_getchar &rArr; __aeabi_assert &rArr; abort &rArr; __rt_SIGABRT &rArr; __rt_SIGABRT_inner &rArr; __default_signal_display &rArr; _ttywrch
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a5]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;rt_ringbuffer_getchar
@@ -1105,8 +1107,12 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_RxCpltCallback
 </UL>
 
-<P><STRONG><a name="[a4]"></a>uart_data_deal</STRONG> (Thumb, 12 bytes, Stack size 0 bytes, drv_usart.o(.text.uart_data_deal))
-<BR><BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
+<P><STRONG><a name="[a4]"></a>uart_data_deal</STRONG> (Thumb, 52 bytes, Stack size 8 bytes, drv_usart.o(.text.uart_data_deal))
+<BR><BR>[Stack]<UL><LI>Max Depth = 64<LI>Call Chain = uart_data_deal &rArr; HAL_UART_Transmit &rArr; UART_WaitOnFlagUntilTimeout
+</UL>
+<BR>[Calls]<UL><LI><a href="#[49]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_Transmit
+</UL>
+<BR>[Called By]<UL><LI><a href="#[55]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 <P>
 <H3>
@@ -1128,7 +1134,7 @@ Local Symbols
 </UL>
 
 <P><STRONG><a name="[87]"></a>UART_Receive_IT</STRONG> (Thumb, 180 bytes, Stack size 4 bytes, stm32f1xx_hal_uart.o(.text.UART_Receive_IT))
-<BR><BR>[Stack]<UL><LI>Max Depth = 124 + Unknown Stack Size
+<BR><BR>[Stack]<UL><LI>Max Depth = 116 + Unknown Stack Size
 <LI>Call Chain = UART_Receive_IT &rArr; HAL_UART_RxCpltCallback &rArr; ringbuffer_data_deal &rArr; rt_ringbuffer_getchar &rArr; __aeabi_assert &rArr; abort &rArr; __rt_SIGABRT &rArr; __rt_SIGABRT_inner &rArr; __default_signal_display &rArr; _ttywrch
 </UL>
 <BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_UART_RxCpltCallback

@@ -4,6 +4,8 @@ extern struct rt_ringbuffer *g_rb;
 extern rt_uint8_t *g_pool;
 uint8_t u8RxData[1] = {0};
 uint8_t u8TxData[1] = {0};
+uint8_t aa[2] = {0xaa, 0xaa};
+uint8_t bb[2] = {0xbb, 0xbb};
 
 /**
  * This function will copy memory content from source address to destination address.
@@ -467,7 +469,7 @@ void rt_ringbuffer_reset(struct rt_ringbuffer *rb)
 
 /*call-back*/
 Data_packet data_packet;
-uint8_t data_deal_complete_flag = 1;
+uint8_t data_deal_complete_flag = 2;
 
 void HAL_UART_RxCpltCallback(UART_HandleTypeDef *huart)
 {
@@ -502,9 +504,8 @@ uint8_t ringbuffer_data_deal(struct rt_ringbuffer *rb, uint8_t *complete_flag)
 {
     uint8_t u8temp = 0;
     static uint8_t checksum = 0;
-    static uint8_t deal_state_e;
+    static uint8_t deal_state_e= STATE_START;
     static uint8_t index = 0;
-    deal_state_e = STATE_START;
     if(*complete_flag == 0)
         return 0;
     if (!rt_ringbuffer_getchar(rb, &u8temp))
@@ -566,7 +567,24 @@ uint8_t ringbuffer_data_deal(struct rt_ringbuffer *rb, uint8_t *complete_flag)
     return 1;
 }
 
-void uart_data_deal(void)
+void uart_data_deal(Data_packet *data_p, uint8_t *complete_flag)
 {
-    data_deal_complete_flag = 1;
+    if(*complete_flag != 0)
+        return;
+    
+    switch(data_p->data[2])
+    {
+        case 0x01:{
+            HAL_UART_Transmit(&huart1, aa, 2, 10);
+            break;
+        }
+        case 0x02:{
+            HAL_UART_Transmit(&huart1, bb, 2, 10);
+            break;
+        }
+        default:{
+            break;
+        }
+    }/*switch end*/
+    *complete_flag = 1;
 }

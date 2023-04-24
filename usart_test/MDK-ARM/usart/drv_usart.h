@@ -31,7 +31,8 @@ enum DEAL_STATUS {
     STATE_END
 };
 
-
+extern Data_packet data_packet;
+extern uint8_t data_deal_complete_flag;
 
 
 struct rt_ringbuffer
@@ -86,7 +87,7 @@ rt_size_t rt_ringbuffer_getchar(struct rt_ringbuffer *rb, rt_uint8_t *ch);
 rt_size_t rt_ringbuffer_data_len(struct rt_ringbuffer *rb);
 
 uint8_t ringbuffer_data_deal(struct rt_ringbuffer *rb, uint8_t *complete_flag);
-void uart_data_deal(void);
+void uart_data_deal(Data_packet *data_packet, uint8_t *complete_flag);
 
 /** return the size of empty space in rb */
 #define rt_ringbuffer_space_len(rb) ((rb)->buffer_size - rt_ringbuffer_data_len(rb))
