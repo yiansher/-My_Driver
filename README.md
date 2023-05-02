@@ -9,3 +9,4 @@
 ## SPI
 
 1. w25qxx write and read
+1. SD and microSD write/read test, noted that microSD should initialize at low speed,change spi speed.
