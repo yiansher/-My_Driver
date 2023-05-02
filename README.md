@@ -9,4 +9,8 @@
 ## SPI
 
 1. w25qxx write and read
-1. SD and microSD write/read test, noted that microSD should initialize at low speed,change spi speed.
+1. SD and microSD write/read test, noted that microSD should be low speed when initialize, change spi speed.
+
+## GPIO
+
+1. KEY: MultiButton的作者是0x1abin, github地址: https://github.com/0x1abin/MultiButton. 
